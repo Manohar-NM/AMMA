@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: 247 213 138;
+  --rose: 245 183 169;
+  --orchid: 191 123 255;
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
+  --font-display: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
+  --font-body: "Inter", "Segoe UI", Arial, sans-serif;
+  --font-script: "Noto Serif", "Georgia", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #05030a;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(245, 183, 169, 0.16), transparent 28rem),
+    radial-gradient(circle at 85% 20%, rgba(191, 123, 255, 0.14), transparent 26rem),
+    linear-gradient(180deg, #05030a 0%, #110712 45%, #05030a 100%);
+  color: #fff8f4;
+  font-family: var(--font-body), sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(247, 213, 138, 0.17), transparent 15rem),
+    radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(245, 183, 169, 0.1), transparent 26rem);
+  mix-blend-mode: screen;
+}
+
+::selection {
+  background: rgba(247, 213, 138, 0.35);
+}
+
+.cinematic-vignette {
+  background:
+    radial-gradient(circle at center, transparent 20%, rgba(5, 3, 10, 0.2) 52%, rgba(5, 3, 10, 0.9) 100%),
+    linear-gradient(90deg, rgba(5, 3, 10, 0.86), transparent 25%, transparent 75%, rgba(5, 3, 10, 0.86));
+}
+
+.glass {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.045));
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(22px);
+}
+
+.gold-border {
+  position: relative;
+}
+
+.gold-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(247, 213, 138, 0.9), rgba(245, 183, 169, 0.34), rgba(191, 123, 255, 0.7));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, #fff9ed, #f7d58a, #f5b7a9, #d6b0ff, #fff9ed);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.perspective {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.mask-fade {
+  mask-image: linear-gradient(to bottom, transparent, black 9%, black 88%, transparent);
+}
+
+.heart-burst {
+  position: fixed;
+  z-index: 70;
+  pointer-events: none;
+  color: rgb(var(--rose));
+  animation: heart-pop 1.2s ease-out forwards;
+  filter: drop-shadow(0 0 14px rgba(245, 183, 169, 0.7));
+}
+
+@keyframes heart-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -20%) scale(0.4);
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -160%) scale(1.8) rotate(18deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}

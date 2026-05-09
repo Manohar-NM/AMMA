@@ -1,0 +1,8 @@
+.next
+node_modules
+out
+next-preview.log
+next-preview-error.log
+npm-debug.log*
+.env*.local
+.vercel
